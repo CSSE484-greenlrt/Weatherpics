@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		941AC38A208A4CF0008EE978 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 941AC389208A4CEE008EE978 /* GoogleService-Info.plist */; };
+		941AC38E208A5302008EE978 /* Weatherpic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941AC38D208A5302008EE978 /* Weatherpic.swift */; };
 		943A66972077D2FC000F5354 /* WeatherpicsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943A66962077D2FB000F5354 /* WeatherpicsTableViewController.swift */; };
 		943A66992077D420000F5354 /* WeatherpicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943A66982077D420000F5354 /* WeatherpicDetailViewController.swift */; };
 		946F6E902077C3D8002EF64B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946F6E8F2077C3D8002EF64B /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 		5458AF4B807356C34B85A95E /* Pods_Weatherpics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weatherpics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D74882F402C3EBECB3A36FC /* Pods-Weatherpics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weatherpics.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weatherpics/Pods-Weatherpics.debug.xcconfig"; sourceTree = "<group>"; };
 		941AC389208A4CEE008EE978 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		941AC38D208A5302008EE978 /* Weatherpic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weatherpic.swift; sourceTree = "<group>"; };
 		943A66962077D2FB000F5354 /* WeatherpicsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherpicsTableViewController.swift; sourceTree = "<group>"; };
 		943A66982077D420000F5354 /* WeatherpicDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherpicDetailViewController.swift; sourceTree = "<group>"; };
 		946F6E8C2077C3D8002EF64B /* Weatherpics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weatherpics.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +83,7 @@
 				946F6E9D2077C3D8002EF64B /* LaunchScreen.storyboard */,
 				946F6EA02077C3D8002EF64B /* Info.plist */,
 				941AC389208A4CEE008EE978 /* GoogleService-Info.plist */,
+				941AC38D208A5302008EE978 /* Weatherpic.swift */,
 			);
 			path = Weatherpics;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				946F6E902077C3D8002EF64B /* AppDelegate.swift in Sources */,
 				943A66992077D420000F5354 /* WeatherpicDetailViewController.swift in Sources */,
 				943A66972077D2FC000F5354 /* WeatherpicsTableViewController.swift in Sources */,
+				941AC38E208A5302008EE978 /* Weatherpic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

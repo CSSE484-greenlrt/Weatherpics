@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import Firebase
 
 class WeatherpicDetailViewController: UIViewController {
 
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var weatherpicImageView: UIImageView!
     
+    var weatherpicRef: DocumentReference?
+    var weatherpicListener: ListenerRegistration!
     var weatherpic: Weatherpic?
  
     override func viewDidLoad() {
@@ -21,6 +24,27 @@ class WeatherpicDetailViewController: UIViewController {
                                                             style: .plain,
                                                             target: self,
                                                             action: #selector(showEditDialog))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        weatherpicListener = weatherpicRef?.addSnapshotListener({ (documentSnapshot, error) in
+            if let error = error {
+                print("Error getting the document: \(error.localizedDescription)")
+                return
+            }
+            if !documentSnapshot!.exists {
+                print("This document got deleted by someone else!")
+                return
+            }
+            self.weatherpic = Weatherpic(documentSnapshot: documentSnapshot!)
+            self.updateView()
+        })
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        weatherpicListener.remove()
     }
     
     @objc func showEditDialog() {
@@ -40,11 +64,11 @@ class WeatherpicDetailViewController: UIViewController {
             style: UIAlertActionStyle.default) {
                 (action) in
                 let captionTextField = alertController.textFields![0]
+                
                 self.weatherpic?.caption = captionTextField.text!
                 self.updateView()
                 
-                // Save the context
-                (UIApplication.shared.delegate as! AppDelegate).saveContext()
+                self.weatherpicRef?.setData(self.weatherpic!.data)
         }
         alertController.addAction(cancelAction)
         alertController.addAction(updateCaptionAction)
@@ -53,11 +77,6 @@ class WeatherpicDetailViewController: UIViewController {
 
     func updateView() {
         captionLabel.text = weatherpic?.caption
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.captionLabel.text = self.weatherpic?.caption
     }
     
     override func viewDidAppear(_ animated: Bool) {
