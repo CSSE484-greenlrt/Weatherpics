@@ -35,9 +35,9 @@ class WeatherpicsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.weatherpics.removeAll()
-        weatherpicsListener = weatherpicsRef.order(by: "created", descending: true).limit(to: 50).addSnapshotListener({ (querySnapshot, error) in
-            guard let snapshot = querySnapshot else {
-                print("Error fetching quotes. error: \(error!.localizedDescription)")
+        weatherpicsListener = weatherpicsRef.order(by: "created", descending: true).limit(to: 50).addSnapshotListener({ (weatherpicSnapshot, error) in
+            guard let snapshot = weatherpicSnapshot else {
+                print("Error fetching weatherpic. error: \(error!.localizedDescription)")
                 return
             }
             snapshot.documentChanges.forEach {(docChange) in
@@ -57,7 +57,13 @@ class WeatherpicsTableViewController: UITableViewController {
             })
             self.tableView.reloadData()
         })
-        weatherpicsNavigationItem.title = FirebaseApp.app()?.options.projectID
+        weatherpicsRef.document("project").addSnapshotListener { (documentSnapshot, error) in
+            if let error = error {
+                print("Error fetching document. \(error.localizedDescription)")
+                return
+            }
+            self.weatherpicsNavigationItem.title = documentSnapshot?.get("name") as? String
+        }
     }
     
     func picAdded(_ document: DocumentSnapshot) {
