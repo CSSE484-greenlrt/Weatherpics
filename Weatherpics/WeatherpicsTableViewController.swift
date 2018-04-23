@@ -57,7 +57,7 @@ class WeatherpicsTableViewController: UITableViewController {
             })
             self.tableView.reloadData()
         })
-        weatherpicsNavigationItem.title = Firestore.firestore().description
+        weatherpicsNavigationItem.title = FirebaseApp.app()?.options.projectID
     }
     
     func picAdded(_ document: DocumentSnapshot) {
