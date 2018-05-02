@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         if Auth.auth().currentUser == nil {
             showLoginViewController();
         } else {
-            showPasswordViewController();
+            showWeatherpicsTableViewController();
         }
         window?.makeKeyAndVisible()
         return true
@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     func handleLogin() {
         //    print("TODO: Implement sign in from the AppDelegate")
-        showPasswordViewController()
+        showWeatherpicsTableViewController()
     }
     
     @objc func handleLogout() {
@@ -86,10 +86,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         window!.rootViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
     }
     
-    func showPasswordViewController() {
+    func showWeatherpicsTableViewController() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let passwordViewController = storyboard.instantiateViewController(withIdentifier: "PasswordViewController")
-        window!.rootViewController = AppNavBar(rootViewController: passwordViewController)
+        let weatherpicsTableViewController = storyboard.instantiateViewController(withIdentifier: "WeatherpicsTableViewController")
+        window!.rootViewController = AppNavBar(rootViewController: weatherpicsTableViewController)
     }
 }
 

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "weatherpics-47c1b",
+  "private_key_id": "6e2a1a00051ffd5de21d616242ca97f1a3b00be5",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDle1Fc+ZKCRC5c\nEreHygEJD6EOghCWeTR1OVfykxdCxb/A12xj3/Ewksh1pmsnly6L2kNQnOoa98Wb\nowpnEKQVNtcISRCndrZgOXNVWjPfAMbYKQGKMtVggBgRXnabrlr6J81/wSE6UjS3\ne4LLzcDQ5v6xcdoGHBveTPYMLpi0V0ZoAtRxk7+rQasLC85W2diKn/8/C7diVnbg\nYeis+Cx+L5Yd53dBw9+/7vLHP0cpsbmLC5EtIXVA0LklBkRcSKMgDISArWv69lBr\nGQ3z4jopI4jLYdPlFYXWB/QBk5OFUQnvkvPrupeCtQHAY0/5Zvk2FeQNvKebkSmt\n02KGbhLpAgMBAAECggEAGu83EOi1lJ7USqgDPNe9uJ6qHonvULwD51TeUNlJGAQe\nEjAut4fBtzvpNZ7dcZmF4/IPp9LtCtKFUfPIXSm3uooz4bPytZciR4fCtNRIJY7h\np94jQUFfaErMmGBMH1Bu+vDIRswIHoBm0djYNJvPG23bW8AjUQeEUVqa3/npoDPr\nxrpdqg3DxnJRgmk8WTESTELkg9zdzPaMVsvNXxCmlimvIMvdhdzTRknTP7i1+5Oo\nkMwIY4RNy/hbY7kfhW4AFbiyV5rn5qMRQRfM9NCHz5Ecy72N3TZTnkup1Yb0E4Cp\nVBZiL+E9Zr1Q2zVs1ot3h2++FUFR5X0ptSL8BaIV8QKBgQD2gvZH5QRTL4fmO4v+\nxSku2Go/3n6XOyEITTGtg6LPZSsvXwVMGwmQdy4g1jQfehFvWeNP5Y9CAuceouwT\n0oUyHyE/bMQH4IVKEJSG+L4vPag13b8Ms3ubVoNnKV0OTqzT7DNDOcUpXLKeSL3v\nUljI8OBpLxAC+loDcWWIlbcFUQKBgQDuUIywFDgiSgrqyezFlUdc4I0gGnp1PKz6\nnPwh/SxbT5jVEnXHbzfoJsygDVeHE2sE6DTmUT7HnXkiwuIIWY41U/H6W0UZpxmD\nLzrjQanJIPmO8l3hFN2AoLsfSDOa19/zk5F4GcjkJn4035oG+Wxt0WygJgcIZ1JO\n6n91vHouGQKBgQCWKMY+mxmcVnqw2xr28UCZ4YgvKafxFTqU5Pja2jGlpdm9fGMs\nrdeQoZh+thyABAp0yst1kr9GFaCVf+bQWE98bYwCJ43twm1O5XSkFwc6nZNGZLII\n2Zf00qkugPrHSVNrsBi13Y3lGStQ0byo+H9Ov7PjPqDBP6DvMfcIUTJwUQKBgCd7\nvPNnRi2YKtrffZT2uI4QvhD1khheZyJWZAeVlIXEWEPk/RJ/wLl7xCc4TqoYc4Cq\noCkQiOA1nN4/f4d2nvMC53JdMMOhRb7QUmdYd7LU/cPLL/acqF4pQxdZtQMQhRAs\nAMvvKbNzFTHZYgGJzYccTWzzH/Mqex6MB3YQNgXxAoGBAOG9ZMJpANVFpvwxVoLE\nJhZRd7UmJYIjE9UkYOA3CtJcGqnoFTZEjWhPL8h+yqlnNmP07ZYJOU8ueqHMl8BX\n8CpZd4fZrbRNNRsiqUqdkXJ0aHF7BLirlzoM2oP83UbzVaqcL9omWOzAlwVya+m1\nJhhyOpfAmoRkKq3F6o9IiaBC\n-----END PRIVATE KEY-----\n",
+  "client_email": "rosefire@weatherpics-47c1b.iam.gserviceaccount.com",
+  "client_id": "107550719565500110321",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/rosefire%40weatherpics-47c1b.iam.gserviceaccount.com"
+}

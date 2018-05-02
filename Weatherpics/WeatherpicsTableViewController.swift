@@ -15,26 +15,46 @@ class WeatherpicsTableViewController: UITableViewController {
     @IBOutlet weak var weatherpicsNavigationItem: UINavigationItem!
     
     var weatherpicsRef: CollectionReference!
+    var currentUserWeatherpicsRef: CollectionReference!
     var weatherpicsListener: ListenerRegistration!
     
     let weatherpicCellIdentifier = "WeatherpicCell"
     let noWeatherpicCellIdentifier = "NoWeatherpicCell"
     let showDetailSegueIdentifier = "ShowDetailSegue"
     var weatherpics = [Weatherpic]()
+    var showingAllWeatherpics = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
+        tableView.delegate = self
+        tableView.dataSource = self
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Menu",
+                                                            style: .plain,
                                                             target: self,
-                                                            action: #selector(showAddDialog))
+                                                            action: #selector(showMenu))
         weatherpicsRef = Firestore.firestore().collection("weatherpics")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.weatherpics.removeAll()
+        self.displayWeatherpics(weatherpicsRef: weatherpicsRef)
+        showingAllWeatherpics = true
+        
+        weatherpicsRef.document("project").addSnapshotListener { (documentSnapshot, error) in
+            if let error = error {
+                print("Error fetching document. \(error.localizedDescription)")
+                return
+            }
+            self.weatherpicsNavigationItem.title = documentSnapshot?.get("name") as? String
+        }
+        
+        guard let currentUser = Auth.auth().currentUser else { return }
+        currentUserWeatherpicsRef = Firestore.firestore().collection(currentUser.uid)
+    }
+    
+    func displayWeatherpics(weatherpicsRef: CollectionReference) {
         weatherpicsListener = weatherpicsRef.order(by: "created", descending: true).limit(to: 50).addSnapshotListener({ (weatherpicSnapshot, error) in
             guard let snapshot = weatherpicSnapshot else {
                 print("Error fetching weatherpic. error: \(error!.localizedDescription)")
@@ -57,13 +77,6 @@ class WeatherpicsTableViewController: UITableViewController {
             })
             self.tableView.reloadData()
         })
-        weatherpicsRef.document("project").addSnapshotListener { (documentSnapshot, error) in
-            if let error = error {
-                print("Error fetching document. \(error.localizedDescription)")
-                return
-            }
-            self.weatherpicsNavigationItem.title = documentSnapshot?.get("name") as? String
-        }
     }
     
     func picAdded(_ document: DocumentSnapshot) {
@@ -94,6 +107,54 @@ class WeatherpicsTableViewController: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         weatherpicsListener.remove()
+    }
+    
+    @objc func showMenu() {
+        let optionMenu = UIAlertController(title: nil, message: "Photo Bucket Options", preferredStyle: .actionSheet)
+        
+        let addAction = UIAlertAction(title: "Add Photo", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            self.showAddDialog()
+        })
+        
+        var editAction: UIAlertAction
+        if !self.isEditing {
+            editAction = UIAlertAction(title: "Select photos to delete", style: .default, handler: {
+                (alert: UIAlertAction!) -> Void in
+                super.setEditing(true, animated: true)
+            })
+        } else {
+            editAction = UIAlertAction(title: "Done editing", style: .default, handler: {
+                (alert: UIAlertAction!) -> Void in
+                super.setEditing(false, animated: true)
+            })
+        }
+        
+        var showAction: UIAlertAction
+        if self.showingAllWeatherpics {
+            showAction = UIAlertAction(title: "Show only my photos", style: .default, handler: { (alert: UIAlertAction!) -> Void in
+                self.weatherpics.removeAll()
+                self.displayWeatherpics(weatherpicsRef: self.currentUserWeatherpicsRef)
+                self.showingAllWeatherpics = false
+            })
+        } else {
+            showAction = UIAlertAction(title: "Show all photos", style: .default, handler: { (alert: UIAlertAction!) -> Void in
+                self.weatherpics.removeAll()
+                self.displayWeatherpics(weatherpicsRef: self.weatherpicsRef)
+                self.showingAllWeatherpics = true
+            })
+        }
+        
+        optionMenu.addAction(addAction)
+        
+//        if !self.isEditing {
+//            editAction.isEnabled = false
+//        }
+        optionMenu.addAction(editAction)
+        
+        optionMenu.addAction(showAction)
+        
+        self.present(optionMenu, animated: true, completion: nil)
     }
     
     @objc func showAddDialog() {
@@ -180,7 +241,16 @@ class WeatherpicsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return weatherpics.count > 0
+        var canEdit = false
+        
+        let documentRef = currentUserWeatherpicsRef.document(weatherpics[indexPath.row].id!)
+        documentRef.getDocument { (document, error) in
+            if (document?.exists)! {
+                canEdit = true
+            }
+        }
+        
+        return canEdit
     }
 
     // Override to support editing the table view.

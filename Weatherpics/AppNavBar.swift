@@ -24,7 +24,7 @@ class AppNavBar: ToolbarController {
     /// Prepares the toolbar.
     private func prepareNavigationBarView() {
         // Title label.
-        toolbar.titleLabel.text = " Password Keeper"
+        toolbar.titleLabel.text = "Photo Bucket"
         toolbar.titleLabel.textAlignment = .left
         toolbar.titleLabel.textColor = .white
         toolbar.titleLabel.font = RobotoFont.regular

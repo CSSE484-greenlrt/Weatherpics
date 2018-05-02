@@ -12,10 +12,7 @@
 		9420A0062098D9CB002C168A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9420A0052098D9CB002C168A /* LoginViewController.swift */; };
 		943A66972077D2FC000F5354 /* WeatherpicsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943A66962077D2FB000F5354 /* WeatherpicsTableViewController.swift */; };
 		943A66992077D420000F5354 /* WeatherpicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943A66982077D420000F5354 /* WeatherpicDetailViewController.swift */; };
-		943FEF152098E1E500944708 /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943FEF142098E1E500944708 /* Password.swift */; };
-		943FEF172098E27B00944708 /* PasswordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943FEF162098E27B00944708 /* PasswordCell.swift */; };
 		943FEF192098E30E00944708 /* AppNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943FEF182098E30E00944708 /* AppNavBar.swift */; };
-		943FEF1B2098E36500944708 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943FEF1A2098E36500944708 /* PasswordViewController.swift */; };
 		946F6E902077C3D8002EF64B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946F6E8F2077C3D8002EF64B /* AppDelegate.swift */; };
 		946F6E9A2077C3D8002EF64B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 946F6E982077C3D8002EF64B /* Main.storyboard */; };
 		946F6E9C2077C3D8002EF64B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 946F6E9B2077C3D8002EF64B /* Assets.xcassets */; };
@@ -31,10 +28,7 @@
 		9420A0052098D9CB002C168A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		943A66962077D2FB000F5354 /* WeatherpicsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherpicsTableViewController.swift; sourceTree = "<group>"; };
 		943A66982077D420000F5354 /* WeatherpicDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherpicDetailViewController.swift; sourceTree = "<group>"; };
-		943FEF142098E1E500944708 /* Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
-		943FEF162098E27B00944708 /* PasswordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCell.swift; sourceTree = "<group>"; };
 		943FEF182098E30E00944708 /* AppNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavBar.swift; sourceTree = "<group>"; };
-		943FEF1A2098E36500944708 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		946F6E8C2077C3D8002EF64B /* Weatherpics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weatherpics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		946F6E8F2077C3D8002EF64B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		946F6E992077C3D8002EF64B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -95,10 +89,7 @@
 				941AC389208A4CEE008EE978 /* GoogleService-Info.plist */,
 				941AC38D208A5302008EE978 /* Weatherpic.swift */,
 				9420A0052098D9CB002C168A /* LoginViewController.swift */,
-				943FEF142098E1E500944708 /* Password.swift */,
-				943FEF162098E27B00944708 /* PasswordCell.swift */,
 				943FEF182098E30E00944708 /* AppNavBar.swift */,
-				943FEF1A2098E36500944708 /* PasswordViewController.swift */,
 			);
 			path = Weatherpics;
 			sourceTree = "<group>";
@@ -273,15 +264,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				943FEF152098E1E500944708 /* Password.swift in Sources */,
 				946F6E902077C3D8002EF64B /* AppDelegate.swift in Sources */,
-				943FEF172098E27B00944708 /* PasswordCell.swift in Sources */,
 				943A66992077D420000F5354 /* WeatherpicDetailViewController.swift in Sources */,
 				943A66972077D2FC000F5354 /* WeatherpicsTableViewController.swift in Sources */,
 				943FEF192098E30E00944708 /* AppNavBar.swift in Sources */,
 				9420A0062098D9CB002C168A /* LoginViewController.swift in Sources */,
 				941AC38E208A5302008EE978 /* Weatherpic.swift in Sources */,
-				943FEF1B2098E36500944708 /* PasswordViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
