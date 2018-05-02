@@ -15,7 +15,7 @@ class WeatherpicsTableViewController: UITableViewController {
     @IBOutlet weak var weatherpicsNavigationItem: UINavigationItem!
     
     var weatherpicsRef: CollectionReference!
-    var currentUserWeatherpicsRef: CollectionReference!
+    var myWeatherpicsQuery: Query!
     var weatherpicsListener: ListenerRegistration!
     
     let weatherpicCellIdentifier = "WeatherpicCell"
@@ -51,7 +51,7 @@ class WeatherpicsTableViewController: UITableViewController {
         }
         
         guard let currentUser = Auth.auth().currentUser else { return }
-        currentUserWeatherpicsRef = Firestore.firestore().collection(currentUser.uid)
+        myWeatherpicsQuery = weatherpicsRef.whereField("uid", isEqualTo: currentUser.uid)
     }
     
     func displayWeatherpics(weatherpicsRef: CollectionReference) {
@@ -134,7 +134,29 @@ class WeatherpicsTableViewController: UITableViewController {
         if self.showingAllWeatherpics {
             showAction = UIAlertAction(title: "Show only my photos", style: .default, handler: { (alert: UIAlertAction!) -> Void in
                 self.weatherpics.removeAll()
-                self.displayWeatherpics(weatherpicsRef: self.currentUserWeatherpicsRef)
+//                self.displayWeatherpics(weatherpicsRef: self.currentUserWeatherpicsRef)
+                self.myWeatherpicsQuery.addSnapshotListener({ (querySnapshot, error) in
+                    guard let snapshot = querySnapshot else {
+                        print("Error fetching query. error: \(error?.localizedDescription)")
+                        return
+                    }
+                    snapshot.documentChanges.forEach {(docChange) in
+                        if (docChange.type == .added) {
+                            print("New weatherpic: \(docChange.document.data())")
+                            self.picAdded(docChange.document)
+                        } else if (docChange.type == .modified) {
+                            print("Modified weatherpic: \(docChange.document.data())")
+                            self.picUpdated(docChange.document)
+                        } else if (docChange.type == .removed) {
+                            print("Removed weatherpic: \(docChange.document.data())")
+                            self.picRemoved(docChange.document)
+                        }
+                    }
+                    self.weatherpics.sort(by: { (mq1, mq2) -> Bool in
+                        return mq1.created > mq2.created
+                    })
+                    self.tableView.reloadData()
+                })
                 self.showingAllWeatherpics = false
             })
         } else {
@@ -145,6 +167,13 @@ class WeatherpicsTableViewController: UITableViewController {
             })
         }
         
+        let signOutAction = UIAlertAction(title: "Sign out", style: .default, handler: { (alert: UIAlertAction!) -> Void in
+            self.appDelegate.handleLogout()
+        })
+        signOutAction.setValue(UIColor.red, forKey: "titleTextColor")
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
         optionMenu.addAction(addAction)
         
 //        if !self.isEditing {
@@ -153,6 +182,9 @@ class WeatherpicsTableViewController: UITableViewController {
         optionMenu.addAction(editAction)
         
         optionMenu.addAction(showAction)
+        optionMenu.addAction(signOutAction)
+        
+        optionMenu.addAction(cancelAction)
         
         self.present(optionMenu, animated: true, completion: nil)
     }
@@ -243,7 +275,7 @@ class WeatherpicsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         var canEdit = false
         
-        let documentRef = currentUserWeatherpicsRef.document(weatherpics[indexPath.row].id!)
+        let documentRef = myWeatherpicsQuery.firestore.document(weatherpics[indexPath.row].id!)
         documentRef.getDocument { (document, error) in
             if (document?.exists)! {
                 canEdit = true
