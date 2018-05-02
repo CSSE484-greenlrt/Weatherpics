@@ -40,6 +40,9 @@ class WeatherpicDetailViewController: UIViewController {
             self.weatherpic = Weatherpic(documentSnapshot: documentSnapshot!)
             self.updateView()
         })
+        if weatherpic?.uid != Auth.auth().currentUser?.uid {
+            navigationItem.rightBarButtonItem = nil
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
