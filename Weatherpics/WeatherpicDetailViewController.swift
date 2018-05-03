@@ -20,10 +20,10 @@ class WeatherpicDetailViewController: UIViewController {
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit Caption",
-                                                            style: .plain,
-                                                            target: self,
-                                                            action: #selector(showEditDialog))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit Caption",
+//                                                            style: .plain,
+//                                                            target: self,
+//                                                            action: #selector(showEditDialog))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,11 +38,18 @@ class WeatherpicDetailViewController: UIViewController {
                 return
             }
             self.weatherpic = Weatherpic(documentSnapshot: documentSnapshot!)
+            
+            if self.weatherpic?.uid == Auth.auth().currentUser?.uid {
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit Caption",
+                                                                    style: .plain,
+                                                                    target: self,
+                                                                    action: #selector(self.showEditDialog))
+            } else {
+                self.navigationItem.rightBarButtonItem = nil
+            }
+            
             self.updateView()
         })
-        if weatherpic?.uid != Auth.auth().currentUser?.uid {
-            navigationItem.rightBarButtonItem = nil
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -88,7 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     func showWeatherpicsTableViewController() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let weatherpicsTableViewController = storyboard.instantiateViewController(withIdentifier: "WeatherpicsTableViewController")
+        let weatherpicsTableViewController = storyboard.instantiateViewController(withIdentifier: "NavigationController")
         window!.rootViewController = weatherpicsTableViewController
     }
 }

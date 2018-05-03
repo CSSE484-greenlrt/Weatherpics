@@ -275,11 +275,12 @@ class WeatherpicsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         var canEdit = false
         
-        let documentRef = myWeatherpicsQuery.firestore.document(weatherpics[indexPath.row].id!)
-        documentRef.getDocument { (document, error) in
-            if (document?.exists)! {
-                canEdit = true
-            }
+        if weatherpics.count == 0 {
+            return canEdit
+        }
+        
+        if weatherpics[indexPath.row].uid == Auth.auth().currentUser?.uid {
+            canEdit = true
         }
         
         return canEdit

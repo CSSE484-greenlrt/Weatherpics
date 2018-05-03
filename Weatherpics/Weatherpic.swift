@@ -14,7 +14,7 @@ class Weatherpic: NSObject {
     var caption: String
     var imageUrl: String
     var created: Date!
-    var uid: String
+    var uid: String!
     
     let captionKey = "caption"
     let imageUrlKey = "imageUrl"
@@ -36,7 +36,9 @@ class Weatherpic: NSObject {
         if (data[createdKey] != nil) {
             self.created = data[createdKey] as! Date
         }
-        self.uid = data[uidKey] as! String
+        if (data[uidKey] != nil) {
+            self.uid = data[uidKey] as! String
+        }
     }
     
     var data: [String: Any] {

@@ -15,7 +15,7 @@
         <!--Navigation Controller-->
         <scene sceneID="ArU-W2-WGk">
             <objects>
-                <navigationController id="PuR-9b-c33" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationController" id="PuR-9b-c33" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yCF-pB-NLl">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -31,7 +31,7 @@
         <!--Weatherpics-->
         <scene sceneID="XGi-J6-c0e">
             <objects>
-                <tableViewController id="VnU-lV-W8V" userLabel="Weatherpics" customClass="WeatherpicsTableViewController" customModule="Weatherpics" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="WeatherpicsTableViewController" id="VnU-lV-W8V" userLabel="Weatherpics" customClass="WeatherpicsTableViewController" customModule="Weatherpics" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="QVg-0P-S5V">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
